@@ -1,4 +1,4 @@
-const SUPABASE_URL = "";
+const SUPABASE_URL = "sb_publishable_bs5ENwhGjtCvyNjrKIHe3Q_YWd_nY7g";
 const SUPABASE_KEY = "pro_players";
 
 const supabaseClient = window.supabase.createClient(
