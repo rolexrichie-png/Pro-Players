@@ -1,3 +1,10 @@
+const SUPABASE_URL = "";
+const SUPABASE_KEY = "pro_players";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 // ================================
 // PRO PLAYERS - STAGE 1 JAVASCRIPT
 // ================================
