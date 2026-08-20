@@ -4,6 +4,47 @@ const SUPABASE_KEY = "pro_players";
 const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
+    const signupForm = document.getElementById("signupForm");
+
+if (signupForm) {
+
+    signupForm.addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("signupEmail").value.trim();
+        const password = document.getElementById("signupPassword").value;
+
+        const message = document.getElementById("signupMessage");
+
+        message.textContent = "Creating your account...";
+
+        const { data, error } = await supabaseClient.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                data: {
+                    full_name: name
+                }
+            }
+        });
+
+        if (error) {
+
+            message.textContent = error.message;
+
+            return;
+        }
+
+        message.textContent =
+            "Account created successfully! Check your email if verification is required.";
+
+        signupForm.reset();
+
+    });
+
+}
 );
 // ================================
 // PRO PLAYERS - STAGE 1 JAVASCRIPT
