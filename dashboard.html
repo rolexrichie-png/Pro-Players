@@ -4,37 +4,138 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Pro Players | Dashboard</title>
+  <title>BoostPro | Dashboard</title>
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
     }
 
     body {
-      background: #07110b;
-      color: white;
-      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f4fff7;
+      color: #173b2a;
     }
 
-    /* =========================
-       NAVBAR
-    ========================= */
-
+    /* NAVBAR */
     .navbar {
       min-height: 70px;
-      background: #0b1910;
-      border-bottom: 1px solid #1f7a3a;
+      background: #0b7a3b;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 15px 6%;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      color: white;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 13px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: #075b2d;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 55px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #0b7a3b, #19a85a);
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      opacity: 0.95;
+    }
+
+    /* DASHBOARD */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+
+    .welcome {
+      margin-bottom: 25px;
+    }
+
+    .welcome h2 {
+      color: #0b7a3b;
+      margin-bottom: 8px;
+    }
+
+    .welcome p {
+      color: #65756c;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 20px;
     }
 
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #0b7a3b;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #66756d;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #0
     .logo {
       color: #32ff72;
       font-size: 22px;
