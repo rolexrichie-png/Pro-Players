@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Pro Players | Dashboard</title>
+  <title>Pro Players | Login</title>
 
   <style>
     * {
@@ -15,26 +15,215 @@
     }
 
     body {
-      background: #07110b;
-      color: white;
       min-height: 100vh;
-    }
-
-    /* NAVBAR */
-    .navbar {
-      height: 70px;
-      background: #0b1910;
-      border-bottom: 1px solid #1f7a3a;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 0 6%;
+      justify-content: center;
+      background: #07110b;
+      color: white;
+      padding: 20px;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 430px;
+      background: #0d1b12;
+      border: 1px solid #1f7a3a;
+      border-radius: 18px;
+      padding: 35px 30px;
+      box-shadow: 0 0 30px rgba(0, 255, 100, 0.12);
     }
 
     .logo {
-      color: #32ff72;
-      font-size: 22px;
+      text-align: center;
+      font-size: 29px;
       font-weight: bold;
+      color: #32ff72;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #9aa79e;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #285637;
+      background: #08130c;
+      color: white;
+      outline: none;
+      font-size: 15px;
+    }
+
+    input:focus {
+      border-color: #32ff72;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #32ff72;
+      color: #06100a;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .login-btn:hover {
+      background: #55ff8a;
+    }
+
+    .signup-text {
+      text-align: center;
+      margin-top: 22px;
+      color: #9aa79e;
+      font-size: 14px;
+    }
+
+    .signup-text a {
+      color: #32ff72;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-home {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #8b968f;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+
+    <div class="logo">🎮 PRO PLAYERS</div>
+
+    <p class="subtitle">
+      Login to continue to your gaming dashboard.
+    </p>
+
+    <form id="loginForm">
+
+      <div class="input-group">
+        <label for="email">Email Address</label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          required
+        >
+      </div>
+
+      <button type="submit" class="login-btn">
+        Login
+      </button>
+
+      <p id="message"></p>
+
+    </form>
+
+    <p class="signup-text">
+      Don't have an account?
+      <a href="signup.html">Create Account</a>
+    </p>
+
+    <a href="index.html" class="back-home">
+      ← Back to Home
+    </a>
+
+  </div>
+
+
+  <script>
+    document
+      .getElementById("loginForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const email =
+          document.getElementById("email").value.trim();
+
+        const message =
+          document.getElementById("message");
+
+        const savedEmail =
+          localStorage.getItem("proPlayersEmail");
+
+        const username =
+          localStorage.getItem("proPlayersUsername");
+
+        if (!savedEmail) {
+          message.textContent =
+            "Please create an account first.";
+
+          message.style.color = "#ff5c5c";
+          return;
+        }
+
+        if (email !== savedEmail) {
+          message.textContent =
+            "Email not found. Check your email.";
+
+          message.style.color = "#ff5c5c";
+          return;
+        }
+
+        message.textContent =
+          "Login successful!";
+
+        message.style.color = "#32ff72";
+
+        setTimeout(function() {
+          window.location.href = "dashboard.html";
+        }, 800);
+
+      });
+  </script>
+
+</body>
+</html>      font-weight: bold;
     }
 
     .nav-links {
