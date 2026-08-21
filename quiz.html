@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BoostPro | Quiz Game</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4fff7;
+      color: #173b2a;
+    }
+
+    header {
+      background: #0b7a3b;
+      color: white;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .back {
+      background: #075b2d;
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .game {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #0b7a3b;
+      margin-bottom: 25px;
+    }
+
+    #question {
+      font-size: 21px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .answer {
+      width: 100%;
+      padding: 14px;
+      margin: 7px 0;
+      border: 2px solid #d5e8dc;
+      background: white;
+      color: #173b2a;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .answer:hover {
+      background: #e9f8ef;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 18px;
+      font-weight: bold;
+      min-height: 25px;
+    }
+
+    .score {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .next {
+      display: none;
+      width: 100%;
+      margin-top: 18px;
+      padding: 14px;
+      border: none;
+      border-radius: 9px;
+      background: #0b7a3b;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #073d22;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">BoostPro</div>
+  <a href="games.html" class="back">Games</a>
+</header>
+
+<div class="container">
+
+  <div class="game">
+
+    <h1>🧠 Quiz Game</h1>
+
+    <div id="question"></div>
+
+    <div id="answers"></div>
+
+    <div id="message"></div>
+
+    <div class="score">
+      Score: <strong id="score">0</strong>
+    </div>
+
+    <button class="next" id="next" onclick="nextQuestion()">
+      Next Question
+    </button>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 BoostPro. All rights reserved.
+</footer>
+
+<script>
+
+  const questions = [
+
+    {
+      question: "What is the capital of Nigeria?",
+      answers: ["Lagos", "Abuja", "Ibadan", "Kano"],
+      correct: "Abuja"
+    },
+
+    {
+      question: "How many days are in a week?",
+      answers: ["5", "6", "7", "8"],
+      correct: "7"
+    },
+
+    {
+      question: "Which planet is known as the Red Planet?",
+      answers: ["Earth", "Mars", "Jupiter", "Venus"],
+      correct: "Mars"
+    },
+
+    {
+      question: "What is 5 + 5?",
+      answers: ["8", "9", "10", "11"],
+      correct: "10"
+    },
+
+    {
+      question: "Which device is commonly used to browse the internet?",
+      answers: ["Calculator", "Phone", "Ruler", "Clock"],
+      correct: "Phone"
+    }
+
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+
+  function loadQuestion() {
+
+    const question = questions[currentQuestion];
+
+    document.getElementById("question").textContent =
+      question.question;
+
+    const answersDiv = document.getElementById("answers");
+
+    answersDiv.innerHTML = "";
+
+    document.getElementById("message").textContent = "";
+
+    document.getElementById("next").style.display = "none";
+
+    question.answers.forEach(answer => {
+
+      const button = document.createElement("button");
+
+      button.textContent = answer;
+
+      button.className = "answer";
+
+      button.onclick = () => checkAnswer(answer);
+
+      answersDiv.appendChild(button);
+
+    });
+  }
+
+  function checkAnswer(answer) {
+
+    const correct =
+      questions[currentQuestion].correct;
+
+    const message =
+      document.getElementById("message");
+
+    if (answer === correct) {
+
+      score++;
+
+      document.getElementById("score").textContent =
+        score;
+
+      message.textContent =
+        "🎉 Correct!";
+
+    } else {
+
+      message.textContent =
+        "❌ Not quite. The correct answer is " + correct;
+
+    }
+
+    document.querySelectorAll(".answer").forEach(button => {
+      button.disabled = true;
+    });
+
+    document.getElementById("next").style.display =
+      "block";
+  }
+
+  function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion >= questions.length) {
+
+      document.getElementById("question").textContent =
+        "🎉 Quiz Complete!";
+
+      document.getElementById("answers").innerHTML =
+        "<p style='text-align:center;'>You scored " +
+        score + " out of " +
+        questions.length +
+        ".</p>";
+
+      document.getElementById("message").textContent =
+        "Great job! 🚀";
+
+      document.getElementById("next").style.display =
+        "none";
+
+      return;
+    }
+
+    loadQuestion();
+  }
+
+  loadQuestion();
+
+</script>
+
+</body>
+</html>
