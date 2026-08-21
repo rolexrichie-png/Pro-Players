@@ -1,1 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Pro Players | Games</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #07110b;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      min-height: 70px;
+      background: #0b1910;
+      border-bottom: 1px solid #1f7a3a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 6%;
+    }
+
+    .logo {
+      color: #32ff72;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #d8e4dc;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #32ff72;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1150px;
+      margin: auto;
+      padding: 40px 0;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .hero h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 span {
+      color: #32ff72;
+    }
+
+    .hero p {
+      color: #8f9d94;
+      line-height: 1.6;
+    }
+
+    .search-box {
+      max-width: 600px;
+      margin: 25px auto 40px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 10px;
+      border: 1px solid #285637;
+      background: #0d1b12;
+      color: white;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .search-box input:focus {
+      border-color: #32ff72;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .game-card {
+      background: #0d1b12;
+      border: 1px solid #1b4429;
+      border-radius: 16px;
+      padding: 25px;
+      transition: 0.2s;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+      border-color: #32ff72;
+    }
+
+    .game-icon {
+      height: 100px;
+      border-radius: 12px;
+      background: #102218;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      margin-bottom: 18px;
+    }
+
+    .game-card h2 {
+      margin-bottom: 8px;
+    }
+
+    .game-card p {
+      color: #929e96;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .category {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 5px 9px;
+      border-radius: 6px;
+      background: #102218;
+      color: #32ff72;
+      font-size: 12px;
+    }
+
+    .game-btn {
+      display: block;
+      text-align: center;
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 9px;
+      background: #32ff72;
+      color: #06100a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .game-btn:hover {
+      background: #55ff8a;
+    }
+
+    @media (max-width: 800px) {
+      .games-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      nav a {
+        margin-left: 8px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .navbar {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0 5px;
+      }
+
+      .games-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 27px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+
+    <div class="logo">
+      🎮 PRO PLAYERS
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="games.html">Games</a>
+      <a href="news.html">News</a>
+      <a href="guides.html">Guides</a>
+    </nav>
+
+  </header>
+
+
+  <main class="container">
+
+    <section class="hero">
+
+      <h1>
+        Explore <span>Games</span>
+      </h1>
+
+      <p>
+        Discover popular games, guides, tips and gaming updates.
+        No account required.
+      </p>
+
+    </section>
+
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="gameSearch"
+        placeholder="🔍 Search games..."
+        oninput="searchGames()"
+      >
+
+    </div>
+
+
+    <section class="games-grid">
+
+
+      <article class="game-card">
+
+        <div class="game-icon">
+          🔥
+        </div>
+
+        <h2>Free Fire</h2>
+
+        <p>
+          Explore Free Fire tips, gameplay information,
+          updates and guides.
+        </p>
+
+        <span class="category">
+          Battle Royale
+        </span>
+
+        <a href="freefire.html" class="game-btn">
+          View Game
+        </a>
+
+      </article>
+
+
+      <article class="game-card">
+
+        <div class="game-icon">
+          🟥
+        </div>
+
+        <h2>Roblox</h2>
+
+        <p>
+          Discover Roblox games, experiences,
+          tips and community updates.
+        </p>
+
+        <span class="category">
+          Adventure
+        </span>
+
+        <a href="roblox.html" class="game-btn">
+          View Game
+        </a>
+
+      </article>
+
+
+      <article class="game-card">
+
+        <div class="game-icon">
+          ⛏️
+        </div>
+
+        <h2>Minecraft</h2>
+
+        <p>
+          Explore Minecraft building ideas,
+          survival tips and gameplay guides.
+        </p>
+
+        <span class="category">
+          Sandbox
+        </span>
+
+        <a href="minecraft.html" class="game-btn">
+          View Game
+        </a>
+
+      </article>
+
+
+      <article class="game-card">
+
+        <div class="game-icon">
+          🏆
+        </div>
+
+        <h2>Fortnite</h2>
+
+        <p>
+          Find Fortnite gameplay information,
+          strategies and updates.
+        </p>
+
+        <span class="category">
+          Battle Royale
+        </span>
+
+        <a href="fortnite.html" class="game-btn">
+          View Game
+        </a>
+
+      </article>
+
+
+      <article class="game-card">
+
+        <div class="game-icon">
+          ⚽
+        </div>
+
+        <h2>EA SPORTS FC</h2>
+
+        <p>
+          Explore football gaming tips,
+          gameplay and updates.
+        </p>
+
+        <span class="category">
+          Sports
+        </span>
+
+        <a href="fc.html" class="game-btn">
+          View Game
+        </a>
+
+      </article>
+
+
+      <article class="game-card">
+
+        <div class="game-icon">
+          🚗
+        </div>
+
+        <h2>Rocket League</h2>
+
+        <p>
+          Improve your gameplay with tips,
+          strategies and training ideas.
+        </p>
+
+        <span class="category">
+          Sports / Racing
+        </span>
+
+        <a href="rocketleague.html" class="game-btn">
+          View Game
+        </a>
+
+      </article>
+
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    function searchGames() {
+
+      const input =
+        document.getElementById("gameSearch");
+
+      const searchText =
+        input.value.toLowerCase().trim();
+
+      const cards =
+        document.querySelectorAll(".game-card");
+
+
+      cards.forEach(card => {
+
+        const text =
+          card.textContent.toLowerCase();
+
+        if (text.includes(searchText)) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+    }
+
+  </script>
+
+</body>
+</html>
