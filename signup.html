@@ -1,40 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pro Players | Sign Up</title>
 
-    <title>Pro Players - Sign Up</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #07110b;
+      color: white;
+      padding: 20px;
+    }
 
-        body {
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            background: #070b12;
-            color: white;
+    .signup-box {
+      width: 100%;
+      max-width: 430px;
+      background: #0d1b12;
+      border: 1px solid #1f7a3a;
+      border-radius: 18px;
+      padding: 35px 30px;
+      box-shadow: 0 0 30px rgba(0, 255, 100, 0.12);
+    }
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    .logo {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      color: #32ff72;
+      margin-bottom: 8px;
+    }
 
-            padding: 20px;
-        }
+    .subtitle {
+      text-align: center;
+      color: #9aa79e;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
 
-        .signup-container {
-            width: 100%;
-            max-width: 430px;
-        }
+    .input-group {
+      margin-bottom: 18px;
+    }
 
-        .logo {
-            text-align: center;
-            font-size: 30px;
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+      color: #dce7df;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #285637;
+      background: #08130c;
+      color: white;
+      outline: none;
+      font-size: 15px;
+    }
+
+    input:focus {
+      border-color: #32ff72;
+      box-shadow: 0 0 8px rgba(50, 255, 114, 0.15);
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #32ff72;
+      color: #06100a;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+      transition: 0.2s;
+    }
+
+    .signup-btn:hover {
+      transform: translateY(-2px);
+      background: #55ff8a;
+    }
+
+    .login-text {
+      text-align: center;
+      margin-top: 22px;
+      color: #9aa79e;
+      font-size: 14px;
+    }
+
+    .login-text a {
+      color: #32ff72;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login-text a:hover {
+      text-decoration: underline;
+    }
+
+    .back-home {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #8b968f;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .back-home:hover {
+      color: #32ff72;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="signup-box">
+
+    <div class="logo">🎮 PRO PLAYERS</div>
+
+    <p class="subtitle">
+      Create your account and join the gaming community.
+    </p>
+
+    <form id="signupForm">
+
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter your username"
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Create a password"
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm your password"
+          required
+        >
+      </div>
+
+      <button type="submit" class="signup-btn">
+        Create Account
+      </button>
+
+      <p id="message"></p>
+
+    </form>
+
+    <p class="login-text">
+      Already have an account?
+      <a href="login.html">Login</a>
+    </p>
+
+    <a href="index.html" class="back-home">
+      ← Back to Home
+    </a>
+
+  </div>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const message = document.getElementById("message");
+
+      if (password !== confirmPassword) {
+        message.textContent = "Passwords do not match.";
+        message            font-size: 30px;
             font-weight: bold;
             margin-bottom: 25px;
         }
